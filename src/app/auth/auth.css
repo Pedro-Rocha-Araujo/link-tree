@@ -1,0 +1,77 @@
+section.auth {
+  width: 100%;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div.auth {
+  width: 96%;
+  max-width: 620px;
+}
+
+div.auth div.header-auth {
+  border-radius: 1.5rem 1.5rem 0 0;
+  color: #fff;
+  background-color: #ff3f4b;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+div.header-auth h1 {
+  font-size: clamp(1.2rem, 12vw, 2.5rem);
+  text-align: center;
+}
+
+div.auth form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+div.auth input, div.auth button {
+  border: none;
+  outline: none;
+  font-size: clamp(0.8rem, 3vw, 1rem);
+  width: 100%;
+}
+
+div.auth input {
+  border-left: 1px solid #ff3f4b;
+  border-right: 1px solid #ff3f4b;
+  border-top: 1px solid #ff3f4b;
+  height: 2.5rem;
+  padding: 0.5rem;
+}
+
+div.auth input::placeholder {
+  color: #a8212a;
+}
+
+div.auth button {
+  color: #fff;
+  background-color: #ff3f4b;
+  height: 2.8rem;
+  border-radius: 0 0 1.5rem 1.5rem;
+}
+
+div.footer-auth {
+  margin-top: 0.5rem;
+}
+
+div.footer-auth p {
+  color: #fff;
+  text-align: center;
+  font-size: clamp(0.8rem, 4vw, 1rem);
+}
+
+div.footer-auth a {
+  color: #fff;
+}
+
+div.footer-auth a:hover {
+  text-decoration: underline;
+}
