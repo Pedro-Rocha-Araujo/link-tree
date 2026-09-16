@@ -23,8 +23,16 @@ export default function Cadastro() {
       const response = await createUserWithEmailAndPassword(auth, email, senha)
       localStorage.setItem("token", response.user.uid)
       router.push("/admin/home/")
-    } catch(erro) {
+    } catch(erro: unknown) {
       console.log(erro)
+      if(erro.code === "auth/email-already-in-use") {
+        toast.error("Email já em uso!")
+        return
+      }
+      if(erro.code === "auth/weak-password") {
+        toast.error("Senha fraca!")
+        return
+      }
       toast.error("Erro!")
     }
   } 
