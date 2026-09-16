@@ -8,7 +8,7 @@ export default function Login() {
       <div className="auth">
 
         <div className="header-auth">
-          <h1>Fazer Login!</h1>
+          <h1>Fazer login!</h1>
         </div>
 
         <form>
