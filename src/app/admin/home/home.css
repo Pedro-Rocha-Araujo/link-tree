@@ -2,13 +2,15 @@ section.home {
   width: 96%;
   max-width: 1080px;
   margin: 3rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 section.home h1 {
   color: #fff;
   text-align: center;
   font-size: clamp(2rem, 8vw, 3rem);
-  margin-bottom: 2rem;
 }
 
 div.links {
@@ -19,14 +21,23 @@ div.links {
   overflow: hidden;
 }
 
-div.link {
+.link {
+  text-align: left;
   width: 100%;
   padding: 1rem;
 }
 
-div.link a {
+a {
   color: #fff;
   font-size: clamp(0.9rem, 4vw, 1.5rem);
+}
+
+a#link-footer {
+  text-align: center;
+}
+
+a#link-footer:hover {
+  text-decoration: underline;
 }
 
 .link:nth-child(even) {

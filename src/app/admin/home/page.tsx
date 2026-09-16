@@ -1,3 +1,5 @@
+'use client'
+import Link from "next/link";
 import "./home.css"
 
 export default function Home() {
@@ -6,23 +8,16 @@ export default function Home() {
       <h1> <i className="fa-solid fa-link" aria-hidden="true"></i> Pedro Rocha Araujo</h1>
       <div className="links">
 
-        <div className="link">
-          <a href=""> <i className="fa-brands fa-youtube" aria-hidden="true"></i> Canal no Youtube</a>
-        </div>
+        <a className="link" href=""> <i className="fa-brands fa-youtube" aria-hidden="true"></i> Canal no Youtube</a>
 
-        <div className="link">
-          <a href=""> <i className="fa-brands fa-linkedin" aria-hidden="true"></i> Linkedin</a>
-        </div>
+        <a className="link" href=""> <i className="fa-brands fa-linkedin" aria-hidden="true"></i> Linkedin</a>
 
-        <div className="link">
-          <a href=""> <i className="fa-brands fa-github" aria-hidden="true"></i> Github</a>
-        </div>
-
-        <div className="link">
-          <a href=""> <i className="fa-solid fa-display" aria-hidden="true"></i> Portfólio</a>
-        </div>
-
+        <a className="link" href=""> <i className="fa-brands fa-github" aria-hidden="true"></i> Github</a>
+        
+        <a className="link" href=""> <i className="fa-solid fa-display" aria-hidden="true"></i> Portfólio</a>
+      
       </div>
+      <Link id="link-footer" href={"/gerenciar-links"}>Gerenciar Links</Link>
     </section>
   );
 }
