@@ -14,7 +14,7 @@ div.auth {
 div.auth div.header-auth {
   border-radius: 1rem 1rem 0 0;
   color: #fff;
-  background-color: #ff2e3b;
+  background-color: #121b3b;
   padding: 2.5rem 1rem;
   text-align: center;
 }
@@ -40,20 +40,20 @@ div.auth input, div.auth button {
 }
 
 div.auth input {
-  border-left: 1px solid #ff2e3b;
-  border-right: 1px solid #ff2e3b;
-  border-top: 1px solid #ff2e3b;
+  border-left: 1px solid #121b3b;
+  border-right: 1px solid #121b3b;
+  border-top: 1px solid #121b3b;
   height: 2.5rem;
   padding: 0.5rem;
 }
 
 div.auth input::placeholder {
-  color: #a8212ac9;
+  color: #121b3b;
 }
 
 div.auth button {
   color: #fff;
-  background-color: #ff2e3b;
+  background-color: #121b3b;
   height: 2.8rem;
   border-radius: 0 0 1rem 1rem;
 }
