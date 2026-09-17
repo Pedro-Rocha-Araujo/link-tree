@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import auth from "@/AuthConnection";
+import Cookies from "js-cookie"
 
 export default function Login() {
   const [email, setEmail] = useState<string>("")
@@ -22,7 +23,7 @@ export default function Login() {
         return
       }
       const response = await signInWithEmailAndPassword(auth, email, senha)
-      localStorage.setItem("token", response.user.uid)
+      Cookies.set("token", response.user.uid)
       router.push("/admin/home/")
     } catch(erro: unknown) {
       console.log(erro)

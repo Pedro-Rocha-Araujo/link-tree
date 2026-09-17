@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import auth from "@/AuthConnection";
+import Cookies from "js-cookie"
 
 export default function Cadastro() {
   const [email, setEmail] = useState<string>("")
@@ -21,7 +22,7 @@ export default function Cadastro() {
         return
       }
       const response = await createUserWithEmailAndPassword(auth, email, senha)
-      localStorage.setItem("token", response.user.uid)
+      Cookies.set("token", response.user.uid)
       router.push("/admin/home/")
     } catch(erro: unknown) {
       console.log(erro)
