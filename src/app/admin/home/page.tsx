@@ -17,7 +17,7 @@ export default function Home() {
         <a className="link" href=""> <i className="fa-solid fa-display" aria-hidden="true"></i> Portfólio</a>
       
       </div>
-      <Link id="link-footer" href={"/gerenciar-links"}>Gerenciar Links</Link>
+      <Link id="link-footer" href={"/admin/gerenciar-links"}>Gerenciar Links</Link>
     </section>
   );
 }

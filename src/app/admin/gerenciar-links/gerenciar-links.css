@@ -1,0 +1,72 @@
+section.gerenciar-links form {
+  margin-top: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+section.gerenciar-links input, section.gerenciar-links button, section.gerenciar-links select {
+  border: none;
+  outline: none;
+  font-size: clamp(0.8rem, 3vw, 1rem);
+  width: 100%;
+}
+
+section.gerenciar-links input {
+  border-left: 1px solid #121b3b;
+  border-right: 1px solid #121b3b;
+  border-top: 1px solid #121b3b;
+  height: 2.5rem;
+  padding: 0.5rem;
+}
+
+section.gerenciar-links input::placeholder {
+  color: #121b3b;
+}
+
+section.gerenciar-links select {
+  color: #fff;
+  background-color: #121b3b;
+  height: 3rem;
+  padding: 0.5rem;
+}
+
+section.gerenciar-links button {
+  color: #fff;
+  background-color: #121b3b;
+  height: 3rem;
+}
+
+div.links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+section.gerenciar-links .link {
+  color: #fff;
+  text-align: left;
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.link:nth-child(even) {
+  background-color: #050814;
+}
+
+.link:nth-child(odd) {
+  background-color: #121b3b;
+}
+
+div.botoes {
+  display: flex;
+  gap: 1rem;
+}

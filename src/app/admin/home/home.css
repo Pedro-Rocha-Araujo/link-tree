@@ -7,12 +7,6 @@ section.home {
   gap: 2rem;
 }
 
-section.home h1 {
-  color: #fff;
-  text-align: center;
-  font-size: clamp(2rem, 8vw, 3rem);
-}
-
 div.links {
   display: flex;
   flex-direction: column;
