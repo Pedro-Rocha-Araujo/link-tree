@@ -23,7 +23,7 @@ export default function Cadastro() {
       }
       const response = await createUserWithEmailAndPassword(auth, email, senha)
       Cookies.set("token", response.user.uid)
-      router.push("/admin/home/")
+      router.push(`/admin/${response.user.uid}/home/`)
     } catch(erro: unknown) {
       console.log(erro)
       if(erro.code === "auth/email-already-in-use") {

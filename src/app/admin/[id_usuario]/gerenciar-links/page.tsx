@@ -14,7 +14,6 @@ export default function GerenciarLinks() {
     <section className="gerenciar-links">
       <h1> <i className="fa-solid fa-gear" aria-hidden="true"></i> Gerencie seus Links</h1>
       <form>
-        <h2>{tipo}</h2>
         <input 
           placeholder="Cole o caminho do link"
           type="text"

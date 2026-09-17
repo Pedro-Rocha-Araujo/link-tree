@@ -24,7 +24,7 @@ export default function Login() {
       }
       const response = await signInWithEmailAndPassword(auth, email, senha)
       Cookies.set("token", response.user.uid)
-      router.push("/admin/home/")
+      router.push(`/admin/${response.user.uid}/home/`)
     } catch(erro: unknown) {
       console.log(erro)
       if(erro.code === "auth/invalid-credential") {

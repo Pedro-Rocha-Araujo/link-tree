@@ -1,8 +1,11 @@
 'use client'
 import Link from "next/link";
 import "./home.css"
+import { useParams } from "next/navigation";
 
 export default function Home() {
+  const { id_usuario } = useParams()
+
   return (
     <section className="home">
       <h1> <i className="fa-solid fa-link" aria-hidden="true"></i> Pedro Rocha Araujo</h1>
@@ -17,7 +20,7 @@ export default function Home() {
         <a className="link" href=""> <i className="fa-solid fa-display" aria-hidden="true"></i> Portfólio</a>
       
       </div>
-      <Link id="link-footer" href={"/admin/gerenciar-links"}>Gerenciar Links</Link>
+      <Link id="link-footer" href={`/admin/${id_usuario}/gerenciar-links`}>Gerenciar Links</Link>
     </section>
   );
 }
