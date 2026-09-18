@@ -16,7 +16,7 @@ export default function GerenciarLinks() {
   const [meusLinks, setMeusLinks] = useState<LinkInterface[]>([])
   const [caminho, setCaminho] = useState<string>("")
   const [tipo, setTipo] = useState<TipoAlias>("")
-  console.log(meusLinks)
+
   const { id_usuario } = useParams()
   const ref = collection(db, "links")
 
@@ -75,7 +75,9 @@ export default function GerenciarLinks() {
       />
 
       <h2> <i className="fa-solid fa-link" aria-hidden="true"></i> Seus links</h2>
-      <Listagem />
+      <Listagem 
+        meusLinks={meusLinks}
+      />
 
     </section>
   )

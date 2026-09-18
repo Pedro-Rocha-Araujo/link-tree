@@ -41,3 +41,9 @@ button {
   border: none;
   cursor: pointer;
 }
+
+.erro {
+  background-color: #f33;
+  padding: 1rem 2rem;
+  border-radius: 2rem;
+}
