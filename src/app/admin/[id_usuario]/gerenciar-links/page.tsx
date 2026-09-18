@@ -1,14 +1,15 @@
 'use client'
 
 import { useState } from "react"
+import { useParams } from "next/navigation"  
 import "./gerenciar-links.css"
+import Formulario from "./Formulario"
 import Listagem from "./Listagem"
 import { toast } from "react-toastify"
 import db from "@/FirebaseConnection"
 import { addDoc, collection } from "firebase/firestore"
-import { useParams } from "next/navigation"  
 
-type TipoAlias = "Linkedin" | "Linkedin" | "Github" | "Portfólio" | ""
+export type TipoAlias = "Linkedin" | "Linkedin" | "Github" | "Portfólio" | ""
 
 export default function GerenciarLinks() {
   const [caminho, setCaminho] = useState<string>("")
@@ -41,26 +42,13 @@ export default function GerenciarLinks() {
   return (
     <section className="gerenciar-links">
       <h1> <i className="fa-solid fa-gear" aria-hidden="true"></i> Gerencie seus Links</h1>
-      <form onSubmit={cadastrarLink}>
-        <input 
-          placeholder="Cole o caminho do link"
-          type="text"
-          value={caminho}
-          onChange={(e)=>setCaminho(e.target.value)}
-          required
-        />
-
-        <select defaultValue={tipo} onChange={(e)=>setTipo(e.target.value)}>
-          <option value="" disabled selected >Selecione o tipo do link que deseja adicionar</option>
-          <option value="Youtube">Youtube</option>
-          <option value="Linkedin">Linkedin</option>
-          <option value="Github">Github</option>
-          <option value="Portfólio">Portfólio</option>
-        </select>
-
-        <button>Adicionar</button>
-
-      </form>
+      <Formulario 
+        cadastrarLink={cadastrarLink} 
+        caminho={caminho} 
+        tipo={tipo} 
+        setTipo={setTipo} 
+        setCaminho={setCaminho}
+      />
 
       <h2> <i className="fa-solid fa-link" aria-hidden="true"></i> Seus links</h2>
       <Listagem />
