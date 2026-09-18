@@ -1,7 +1,7 @@
-import { LinkProps } from "next/link"
+import { LinkInterface } from "@/interfaces"
 
 interface ListagemProps {
-  meusLinks: LinkProps[]
+  meusLinks: LinkInterface[]
 }
 
 export default function Listagem({ meusLinks }: ListagemProps ) {
@@ -13,7 +13,7 @@ export default function Listagem({ meusLinks }: ListagemProps ) {
       ) : (
         meusLinks.map((link)=> {
           return (
-            <div className="link">
+            <div key={link.id} className="link">
               { link.tipo === "Portfólio" ? (
                 <h3> <i className="fa-solid fa-display" aria-hidden="true"></i> Portfólio</h3>
               ) : (

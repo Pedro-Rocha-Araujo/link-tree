@@ -10,7 +10,7 @@ import db from "@/FirebaseConnection"
 import { getDocs, addDoc, collection } from "firebase/firestore"
 import { LinkInterface } from "@/interfaces"
 
-export type TipoAlias = "Linkedin" | "Linkedin" | "Github" | "Portfólio" | ""
+export type TipoAlias = "Linkedin" | "Linkedin" | "Github" | "Portfólio" | "Youtube" | ""
 
 export default function GerenciarLinks() {
   const [meusLinks, setMeusLinks] = useState<LinkInterface[]>([])
@@ -48,6 +48,7 @@ export default function GerenciarLinks() {
         const array = response.docs.map((item)=> {
           const dados = item.data()
           return {
+            id: item.id,
             id_usuario: dados.id_usuario,
             caminho: dados.caminho,
             tipo: dados.tipo
@@ -67,6 +68,7 @@ export default function GerenciarLinks() {
     <section className="gerenciar-links">
       <h1> <i className="fa-solid fa-gear" aria-hidden="true"></i> Gerencie seus Links</h1>
       <Formulario 
+        meusLinks={meusLinks}
         cadastrarLink={cadastrarLink} 
         caminho={caminho} 
         tipo={tipo} 
