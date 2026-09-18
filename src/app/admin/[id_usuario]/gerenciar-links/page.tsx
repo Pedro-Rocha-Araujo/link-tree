@@ -1,21 +1,24 @@
 'use client'
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useParams } from "next/navigation"  
 import "./gerenciar-links.css"
 import Formulario from "./Formulario"
 import Listagem from "./Listagem"
 import { toast } from "react-toastify"
 import db from "@/FirebaseConnection"
-import { addDoc, collection } from "firebase/firestore"
+import { getDocs, addDoc, collection } from "firebase/firestore"
+import { LinkInterface } from "@/interfaces"
 
 export type TipoAlias = "Linkedin" | "Linkedin" | "Github" | "Portfólio" | ""
 
 export default function GerenciarLinks() {
+  const [meusLinks, setMeusLinks] = useState<LinkInterface[]>([])
   const [caminho, setCaminho] = useState<string>("")
   const [tipo, setTipo] = useState<TipoAlias>("")
-
+  console.log(meusLinks)
   const { id_usuario } = useParams()
+  const ref = collection(db, "links")
 
   async function cadastrarLink(e: React.FormEvent) {
     e.preventDefault()
@@ -24,7 +27,6 @@ export default function GerenciarLinks() {
         toast.error("Erro!")
         return
       }
-      const ref = collection(db, "links")
       await addDoc(ref, {
         caminho: caminho,
         tipo: tipo,
@@ -38,6 +40,28 @@ export default function GerenciarLinks() {
       toast.error("Erro!")
     }
   }
+
+  useEffect(()=>{
+    async function getLinks() {
+      try { 
+        const response = await getDocs(ref)
+        const array = response.docs.map((item)=> {
+          const dados = item.data()
+          return {
+            id_usuario: dados.id_usuario,
+            caminho: dados.caminho,
+            tipo: dados.tipo
+          }
+        })
+        setMeusLinks(array.filter((i)=> {
+          return i.id_usuario === id_usuario
+        }))
+      } catch(erro) {
+        console.log(erro)
+      }
+    }
+    getLinks()
+  }, [])
 
   return (
     <section className="gerenciar-links">
