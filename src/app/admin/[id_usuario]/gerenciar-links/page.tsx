@@ -7,7 +7,7 @@ import Formulario from "./Formulario"
 import Listagem from "./Listagem"
 import { toast } from "react-toastify"
 import db from "@/FirebaseConnection"
-import { getDocs, addDoc, collection } from "firebase/firestore"
+import { getDocs, addDoc, deleteDoc, doc, collection } from "firebase/firestore"
 import { LinkInterface } from "@/interfaces"
 import Link from "next/link"
 
@@ -20,6 +20,26 @@ export default function GerenciarLinks() {
 
   const { id_usuario } = useParams()
   const ref = collection(db, "links")
+
+  async function getLinks() {
+    try { 
+      const response = await getDocs(ref)
+      const array = response.docs.map((item)=> {
+        const dados = item.data()
+        return {
+          id: item.id,
+          id_usuario: dados.id_usuario,
+          caminho: dados.caminho,
+          tipo: dados.tipo
+        }
+      })
+      setMeusLinks(array.filter((i)=> {
+        return i.id_usuario === id_usuario
+      }))
+    } catch(erro) {
+      console.log(erro)
+    }
+  }
 
   async function cadastrarLink(e: React.FormEvent) {
     e.preventDefault()
@@ -35,6 +55,7 @@ export default function GerenciarLinks() {
       })
       setCaminho("")
       setTipo("")
+      getLinks()
       toast.success("Link cadastrado.")
     } catch(erro) {
       console.log(erro) 
@@ -42,26 +63,22 @@ export default function GerenciarLinks() {
     }
   }
 
-  useEffect(()=>{
-    async function getLinks() {
-      try { 
-        const response = await getDocs(ref)
-        const array = response.docs.map((item)=> {
-          const dados = item.data()
-          return {
-            id: item.id,
-            id_usuario: dados.id_usuario,
-            caminho: dados.caminho,
-            tipo: dados.tipo
-          }
-        })
-        setMeusLinks(array.filter((i)=> {
-          return i.id_usuario === id_usuario
-        }))
-      } catch(erro) {
-        console.log(erro)
-      }
+  async function deletarLink(id: string) {
+    try {
+      const docRef = doc(db, "links", id)
+      await deleteDoc(docRef)
+      setMeusLinks(meusLinks.filter((link)=> {
+        return link.id !== id
+      }))
+      toast.success("Link deletado!")
+    } catch(erro) {
+      console.log(erro)
+      toast.error("Erro!")
     }
+  }
+
+
+  useEffect(()=>{
     getLinks()
   }, [])
 
@@ -80,6 +97,7 @@ export default function GerenciarLinks() {
       <h2> <i className="fa-solid fa-link" aria-hidden="true"></i> Seus links</h2>
       <Listagem 
         meusLinks={meusLinks}
+        deletarLink={deletarLink}
       />
 
       <Link className="link-footer" href={`/admin/${id_usuario}/home`}>Voltar para a Home</Link>

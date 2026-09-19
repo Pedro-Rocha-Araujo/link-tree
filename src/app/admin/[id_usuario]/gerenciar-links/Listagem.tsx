@@ -1,10 +1,11 @@
 import { LinkInterface } from "@/interfaces"
 
 interface ListagemProps {
-  meusLinks: LinkInterface[]
+  meusLinks: LinkInterface[],
+  deletarLink: (id: string)=> void
 }
 
-export default function Listagem({ meusLinks }: ListagemProps ) {
+export default function Listagem({ meusLinks, deletarLink }: ListagemProps ) {
   return (
     <div className="links">
 
@@ -22,7 +23,7 @@ export default function Listagem({ meusLinks }: ListagemProps ) {
               ) }
               <div className="botoes">
                 <i className="fa-solid fa-pen-to-square fa-lg" aria-hidden="true"></i>
-                <i className="fa-solid fa-trash fa-lg" aria-hidden="true"></i>
+                <i onClick={()=>deletarLink(link.id)} className="fa-solid fa-trash fa-lg" aria-hidden="true"></i>
               </div>
             </div>
           )
