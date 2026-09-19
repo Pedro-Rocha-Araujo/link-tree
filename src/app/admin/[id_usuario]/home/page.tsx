@@ -52,6 +52,7 @@ export default function Home() {
                   key={link.id}
                   className="link" 
                   href={link.caminho}
+                  target="_blank"
                 > <i className="fa-solid fa-display" aria-hidden="true"></i> Portfólio</a>
               )
             }
@@ -60,13 +61,14 @@ export default function Home() {
                 key={link.id}
                 className="link" 
                 href={link.caminho}
+                target="_blank"
                 > <i className={"fa-brands fa-"+link.tipo.toLowerCase()} aria-hidden="true"></i> {link.tipo}</a>
             )
           })
         ) }
       
       </div>
-      <Link id="link-footer" href={`/admin/${id_usuario}/gerenciar-links`}>Gerenciar Links</Link>
+      <Link className="link-footer" href={`/admin/${id_usuario}/gerenciar-links`}>Gerenciar Links</Link>
     </section>
   );
 }

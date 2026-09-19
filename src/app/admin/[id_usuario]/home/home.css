@@ -21,19 +21,6 @@ div.links {
   padding: 1rem;
 }
 
-a {
-  color: #fff;
-  font-size: clamp(0.9rem, 4vw, 1.5rem);
-}
-
-a#link-footer {
-  text-align: center;
-}
-
-a#link-footer:hover {
-  text-decoration: underline;
-}
-
 .link:nth-child(even) {
   background-color: #050814;
 }

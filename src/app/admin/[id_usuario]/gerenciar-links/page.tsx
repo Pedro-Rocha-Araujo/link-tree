@@ -9,6 +9,7 @@ import { toast } from "react-toastify"
 import db from "@/FirebaseConnection"
 import { getDocs, addDoc, collection } from "firebase/firestore"
 import { LinkInterface } from "@/interfaces"
+import Link from "next/link"
 
 export type TipoAlias = "Linkedin" | "Linkedin" | "Github" | "Portfólio" | "Youtube" | ""
 
@@ -81,6 +82,7 @@ export default function GerenciarLinks() {
         meusLinks={meusLinks}
       />
 
+      <Link className="link-footer" href={`/admin/${id_usuario}/home`}>Voltar para a Home</Link>
     </section>
   )
 }
