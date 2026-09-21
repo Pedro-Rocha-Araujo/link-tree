@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import Link from "next/link";
 import "../public.css"
 import { useParams } from "next/navigation";
-import db from "@/FirebaseConnection";
+import db from "@/firebaseConnection";
 import { collection, getDocs } from "firebase/firestore";
 import { LinkInterface } from "@/interfaces";
 import { UsuarioInterface } from "@/interfaces"

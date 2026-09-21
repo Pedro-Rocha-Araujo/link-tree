@@ -4,11 +4,12 @@ import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
+import Cookies from "js-cookie"
+
+import db from "@/firebaseConnection";
+import auth from "@/authConnection";
 import { collection, addDoc } from "firebase/firestore";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import db from "@/FirebaseConnection";
-import auth from "@/AuthConnection";
-import Cookies from "js-cookie"
 
 export default function Cadastro() {
   const [nome, setNome] = useState<string>("")

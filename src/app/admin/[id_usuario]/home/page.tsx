@@ -4,11 +4,12 @@ import { useState, useEffect } from "react"
 import Link from "next/link";
 import "./home.css"
 import { useParams } from "next/navigation";
-import db from "@/FirebaseConnection";
-import { collection, getDocs } from "firebase/firestore";
 import { LinkInterface } from "@/interfaces";
 import { UsuarioInterface } from "@/interfaces"
 import { toast } from "react-toastify";
+
+import db from "@/firebaseConnection";
+import { collection, getDocs } from "firebase/firestore";
 
 export default function Home() {
   const [usuario, setUsuario] = useState<UsuarioInterface | null>(null)

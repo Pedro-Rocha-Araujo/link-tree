@@ -5,9 +5,10 @@ import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import auth from "@/AuthConnection";
 import Cookies from "js-cookie"
+
+import auth from "@/authConnection";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 export default function Login() {
   const [email, setEmail] = useState<string>("")

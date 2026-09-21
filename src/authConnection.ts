@@ -1,5 +1,5 @@
 import { getAuth } from "firebase/auth"
-import { app } from "./FirebaseConnection"
+import { app } from "./firebaseConnection"
 
 const auth = getAuth(app)
 
