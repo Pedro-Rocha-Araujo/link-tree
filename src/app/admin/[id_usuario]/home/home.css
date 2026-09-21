@@ -4,7 +4,7 @@ section.home {
   margin: 3rem auto;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 div.links {
@@ -40,6 +40,10 @@ div.copiar-link {
   width: 100%;  
   padding: 1rem;
   border-radius: 0.5rem;
+}
+
+div.copiar-link:hover {
+  cursor: pointer
 }
 
 div.copiar-link p {

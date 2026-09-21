@@ -7,6 +7,7 @@ import db from "@/FirebaseConnection";
 import { collection, getDocs } from "firebase/firestore";
 import { LinkInterface } from "@/interfaces";
 import { UsuarioInterface } from "@/interfaces"
+import { toast } from "react-toastify";
 
 export default function Home() {
   const [usuario, setUsuario] = useState<UsuarioInterface | null>(null)
@@ -66,6 +67,11 @@ export default function Home() {
     }
     getLinks()
   }, [])
+  
+  function copiarLink() {
+    toast.success("Link copiado!")
+    navigator.clipboard.writeText(`${link}/admin/${id_usuario}/home/`)
+  }
 
   return (
     <section className="home">
@@ -99,7 +105,7 @@ export default function Home() {
       
       </div>
       <Link className="link-footer" href={`/admin/${id_usuario}/gerenciar-links`}>Gerenciar Links</Link>
-      <div className="copiar-link">
+      <div onClick={copiarLink} className="copiar-link">
         <p className="pc">{link}/admin/{id_usuario}/home/</p>
         <p className="mobile">Copiar Link</p>
         <i className="fa-regular fa-copy fa-lg"></i>
