@@ -33,16 +33,8 @@ export default function Cadastro() {
       })
       Cookies.set("token", response.user.uid)
       router.push(`/admin/${response.user.uid}/home/`)
-    } catch(erro: unknown) {
+    } catch(erro) {
       console.log(erro)
-      if(erro.code === "auth/email-already-in-use") {
-        toast.error("Email já em uso!")
-        return
-      }
-      if(erro.code === "auth/weak-password") {
-        toast.error("Senha fraca!")
-        return
-      }
       toast.error("Erro!")
     }
   } 

@@ -26,12 +26,8 @@ export default function Login() {
       const response = await signInWithEmailAndPassword(auth, email, senha)
       Cookies.set("token", response.user.uid)
       router.push(`/admin/${response.user.uid}/home/`)
-    } catch(erro: unknown) {
+    } catch(erro) {
       console.log(erro)
-      if(erro.code === "auth/invalid-credential") {
-        toast.error("Dados inválidos!")
-        return
-      }
       toast.error("Erro!")
       }
     } 
