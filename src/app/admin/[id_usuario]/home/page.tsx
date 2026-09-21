@@ -85,21 +85,21 @@ export default function Home() {
           meusLinks.map((link)=> {
             if(link.tipo === "Portfólio") {
               return (
-                <a 
+                <Link 
                   key={link.id}
                   className="link" 
                   href={link.caminho}
                   target="_blank"
-                > <i className="fa-solid fa-display" aria-hidden="true"></i> Portfólio</a>
+              > <i className="fa-solid fa-display" aria-hidden="true"></i> Portfólio</Link>
               )
             }
             return (
-              <a 
+              <Link 
                 key={link.id}
                 className="link" 
                 href={link.caminho}
                 target="_blank"
-                > <i className={"fa-brands fa-"+link.tipo.toLowerCase()} aria-hidden="true"></i> {link.tipo}</a>
+              > <i className={"fa-brands fa-"+link.tipo.toLowerCase()} aria-hidden="true"></i> {link.tipo}</Link>
             )
           })
         ) }

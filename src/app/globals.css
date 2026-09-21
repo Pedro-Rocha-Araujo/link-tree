@@ -12,7 +12,7 @@ body {
 section {
   width: 96%;
   max-width: 1080px;
-  margin: 3rem auto;
+  margin: auto;
 }
 
 h1 {
@@ -62,4 +62,25 @@ button {
   background-color: #f33;
   padding: 1rem 2rem;
   border-radius: 2rem;
+}
+
+section.not-found {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+section.not-found p {
+  color: #fff;
+  font-size: clamp(0.8rem, 4vw, 1.3rem);
+  text-align: center;
+}
+
+section.not-found button {
+  padding: 0.6rem 1.5rem;
+  border-radius: 2rem;
+  font-size: clamp(0.8rem, 4vw, 1.3rem);
 }

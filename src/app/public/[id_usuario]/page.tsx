@@ -67,7 +67,7 @@ export default function Public() {
   }, [])
 
   return (
-    <section className="home">
+    <section className="public">
       <h1> <i className="fa-solid fa-link"></i> {usuario ? usuario.nome : "Meus Links"}</h1>
       <div className="links">
 
