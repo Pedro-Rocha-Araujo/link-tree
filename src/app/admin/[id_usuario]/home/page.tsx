@@ -11,10 +11,11 @@ import { UsuarioInterface } from "@/interfaces"
 export default function Home() {
   const [usuario, setUsuario] = useState<UsuarioInterface | null>(null)
   const [meusLinks, setMeusLinks] = useState<LinkInterface[]>([])
-  console.log(usuario)
+
   const ref = collection(db, "links")
 
   const { id_usuario } = useParams()
+  const link = `${window.location.origin}`
 
   useEffect(()=> {
     async function getUsuario() {
@@ -68,7 +69,7 @@ export default function Home() {
 
   return (
     <section className="home">
-      <h1> <i className="fa-solid fa-link" aria-hidden="true"></i> {usuario ? usuario.nome : "Meus Links"}</h1>
+      <h1> <i className="fa-solid fa-link"></i> {usuario ? usuario.nome : "Meus Links"}</h1>
       <div className="links">
 
         { meusLinks.length < 1 ? (
@@ -98,6 +99,10 @@ export default function Home() {
       
       </div>
       <Link className="link-footer" href={`/admin/${id_usuario}/gerenciar-links`}>Gerenciar Links</Link>
+      <div className="copiar-link">
+        <p>{link}/admin/{id_usuario}/home/</p>
+        <i className="fa-regular fa-copy fa-lg"></i>
+      </div>
     </section>
   );
 }

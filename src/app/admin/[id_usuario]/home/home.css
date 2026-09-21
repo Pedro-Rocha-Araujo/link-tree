@@ -28,3 +28,19 @@ div.links {
 .link:nth-child(odd) {
   background-color: #121b3b;
 }
+
+div.copiar-link {
+  color: #fff;
+  background-color: #050814;
+  box-shadow: -2px 2px 1px 1px #121b3b;
+  border: 1px solid #121b3b;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 96%;
+  margin: auto;
+  max-width: 1080px;  
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+

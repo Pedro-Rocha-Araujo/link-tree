@@ -33,10 +33,14 @@ h3 {
   font-size: clamp(1rem, 5vw, 1.4rem);
 }
 
+p {
+  font-size: clamp(0.8rem, 4vw, 1.2rem);
+}
+
 a {
+  font-size: clamp(0.8rem, 4vw, 1.2rem);
   text-decoration: none;
   color: #fff;
-  font-size: clamp(0.8rem, 4vw, 1.2rem);
 }
 
 a.link-footer {
