@@ -6,3 +6,9 @@ export interface LinkInterface {
   tipo: TipoAlias,
   id_usuario: string
 }
+
+export interface UsuarioInterface {
+  id: string,
+  nome: string,
+  id_usuario: string
+}

@@ -6,13 +6,42 @@ import { useParams } from "next/navigation";
 import db from "@/FirebaseConnection";
 import { collection, getDocs } from "firebase/firestore";
 import { LinkInterface } from "@/interfaces";
+import { UsuarioInterface } from "@/interfaces"
 
 export default function Home() {
-  const [meusLinks, setMeusLinks] = useState<[LinkInterface]>([])
-
+  const [usuario, setUsuario] = useState<UsuarioInterface | null>(null)
+  const [meusLinks, setMeusLinks] = useState<LinkInterface[]>([])
+  console.log(usuario)
   const ref = collection(db, "links")
 
   const { id_usuario } = useParams()
+
+  useEffect(()=> {
+    async function getUsuario() {
+      try {
+        if(!id_usuario) {
+          return
+        }
+        const userRef = collection(db, "users")
+        const response = await getDocs(userRef)
+        const usuarioEncontrado = response.docs.find((item)=> {
+          const dados = item.data()
+          return dados.id_usuario === id_usuario
+        })
+        if(usuarioEncontrado) {
+          const data = usuarioEncontrado.data()
+          setUsuario({
+            id: usuarioEncontrado.id,
+            nome: data.nome,
+            id_usuario: data.id_usuario
+          })
+        }
+      } catch(erro) {
+        console.log(`Erro ao buscar o usuário -> ${erro}`)
+      }
+    }
+    getUsuario()
+  }, [id_usuario])
 
   useEffect(()=>{
     async function getLinks() {
@@ -39,7 +68,7 @@ export default function Home() {
 
   return (
     <section className="home">
-      <h1> <i className="fa-solid fa-link" aria-hidden="true"></i> Pedro Rocha Araujo</h1>
+      <h1> <i className="fa-solid fa-link" aria-hidden="true"></i> {usuario?.nome}</h1>
       <div className="links">
 
         { meusLinks.length < 1 ? (
