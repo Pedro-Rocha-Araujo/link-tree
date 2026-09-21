@@ -100,7 +100,8 @@ export default function Home() {
       </div>
       <Link className="link-footer" href={`/admin/${id_usuario}/gerenciar-links`}>Gerenciar Links</Link>
       <div className="copiar-link">
-        <p>{link}/admin/{id_usuario}/home/</p>
+        <p className="pc">{link}/admin/{id_usuario}/home/</p>
+        <p className="mobile">Copiar Link</p>
         <i className="fa-regular fa-copy fa-lg"></i>
       </div>
     </section>

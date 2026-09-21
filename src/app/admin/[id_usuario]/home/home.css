@@ -37,10 +37,25 @@ div.copiar-link {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 96%;
-  margin: auto;
-  max-width: 1080px;  
+  width: 100%;  
   padding: 1rem;
   border-radius: 0.5rem;
 }
 
+div.copiar-link p {
+  font-size: clamp(0.8rem, 2vw, 1rem);
+}
+
+p.mobile {
+  display: none;
+}
+
+@media screen and (max-width: 520px) {
+  p.mobile {
+    display: inline;
+  }
+
+  p.pc {
+    display: none;
+  }
+}
