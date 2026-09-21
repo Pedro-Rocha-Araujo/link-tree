@@ -68,7 +68,7 @@ export default function Home() {
 
   return (
     <section className="home">
-      <h1> <i className="fa-solid fa-link" aria-hidden="true"></i> {usuario?.nome}</h1>
+      <h1> <i className="fa-solid fa-link" aria-hidden="true"></i> {usuario ? usuario.nome : "Meus Links"}</h1>
       <div className="links">
 
         { meusLinks.length < 1 ? (
