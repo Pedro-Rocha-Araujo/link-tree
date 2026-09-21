@@ -22,8 +22,12 @@ export default function Listagem({ meusLinks, deletarLink }: ListagemProps ) {
                 aria-hidden="true"></i> {link.tipo}</h3>
               ) }
               <div className="botoes">
-                <i className="fa-solid fa-pen-to-square fa-lg" aria-hidden="true"></i>
-                <i onClick={()=>deletarLink(link.id)} className="fa-solid fa-trash fa-lg" aria-hidden="true"></i>
+                <i 
+                  onClick={()=>deletarLink(link.id)} 
+                  className="fa-solid fa-trash fa-lg" 
+                  aria-hidden="true"
+                ></i>
+                
               </div>
             </div>
           )

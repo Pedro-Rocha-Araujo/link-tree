@@ -4,11 +4,14 @@ import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
+import { collection, addDoc } from "firebase/firestore";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import db from "@/FirebaseConnection";
 import auth from "@/AuthConnection";
 import Cookies from "js-cookie"
 
 export default function Cadastro() {
+  const [nome, setNome] = useState<string>("")
   const [email, setEmail] = useState<string>("")
   const [senha, setSenha] = useState<string>("")
 
@@ -17,11 +20,16 @@ export default function Cadastro() {
   async function cadastrarUsuario(e:React.FormEvent) {
     e.preventDefault()
     try { 
-      if(!email || !senha) {
+      if(!email || !senha || !nome) {
         toast.error("Preencha todos os campos")
         return
       }
+      const ref = collection(db, "users")
       const response = await createUserWithEmailAndPassword(auth, email, senha)
+      await addDoc(ref, {
+        nome: nome,
+        id_usuario: response.user.uid
+      })
       Cookies.set("token", response.user.uid)
       router.push(`/admin/${response.user.uid}/home/`)
     } catch(erro: unknown) {
@@ -48,6 +56,13 @@ export default function Cadastro() {
         </div>
 
         <form onSubmit={cadastrarUsuario}>
+          <input
+            type="text"
+            placeholder="Digite seu Nome"
+            required
+            value={nome}
+            onChange={(e)=>setNome(e.target.value)}
+          />
           <input
             type="email"
             placeholder="Digite seu E-mail"

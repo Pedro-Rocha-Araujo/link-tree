@@ -7,7 +7,7 @@ interface FormularioProps {
   tipo: TipoAlias,
   setTipo: (e: TipoAlias)=> void,
   setCaminho: (e: string)=> void,
-  meusLinks: LinkInterface[]
+  meusLinks: LinkInterface[],
 }
 
 export default function Formulario(
@@ -23,7 +23,10 @@ export default function Formulario(
           required
         />
 
-        <select defaultValue={tipo} onChange={(e)=>setTipo(e.target.value as TipoAlias) }>
+        <select 
+          defaultValue={tipo} 
+          onChange={(e)=>setTipo(e.target.value as TipoAlias) }
+        >
           <option value="" disabled>Selecione o tipo do link que deseja adicionar</option>
           <option disabled={meusLinks.some((i)=> i.tipo==='Youtube')} value="Youtube">Youtube</option>
           <option disabled={meusLinks.some((i)=> i.tipo==='Linkedin')} value="Linkedin">Linkedin</option>
