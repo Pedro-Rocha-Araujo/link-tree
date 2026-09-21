@@ -17,4 +17,4 @@ O presente projeto é um gerenciador de links, que permite organizar seus links 
 * Criação de uma página personalizada com seus links
 * Exclusão de links adicionados
 
-## 🔗 Deploy do projeto: 
+## 🔗 Deploy do projeto: https://link-tree-ydk3.vercel.app/auth/login
