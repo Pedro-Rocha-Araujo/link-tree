@@ -1,0 +1,30 @@
+section.home {
+  width: 96%;
+  max-width: 1080px;
+  margin: 3rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+div.links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.link {
+  text-align: left;
+  width: 100%;
+  padding: 1rem;
+}
+
+.link:nth-child(even) {
+  background-color: #050814;
+}
+
+.link:nth-child(odd) {
+  background-color: #121b3b;
+}

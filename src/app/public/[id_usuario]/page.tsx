@@ -1,23 +1,20 @@
 'use client'
-
 import { useState, useEffect } from "react"
 import Link from "next/link";
-import "./home.css"
+import "../public.css"
 import { useParams } from "next/navigation";
 import db from "@/FirebaseConnection";
 import { collection, getDocs } from "firebase/firestore";
 import { LinkInterface } from "@/interfaces";
 import { UsuarioInterface } from "@/interfaces"
-import { toast } from "react-toastify";
 
-export default function Home() {
+export default function Public() {
   const [usuario, setUsuario] = useState<UsuarioInterface | null>(null)
   const [meusLinks, setMeusLinks] = useState<LinkInterface[]>([])
 
   const ref = collection(db, "links")
 
   const { id_usuario } = useParams()
-  const link = `${window.location.origin}`
 
   useEffect(()=> {
     async function getUsuario() {
@@ -68,11 +65,6 @@ export default function Home() {
     }
     getLinks()
   }, [])
-  
-  function copiarLink() {
-    toast.success("Link copiado!")
-    navigator.clipboard.writeText(`${link}/public/${id_usuario}/`)
-  }
 
   return (
     <section className="home">
@@ -85,31 +77,25 @@ export default function Home() {
           meusLinks.map((link)=> {
             if(link.tipo === "Portfólio") {
               return (
-                <a 
+                <Link 
                   key={link.id}
                   className="link" 
                   href={link.caminho}
                   target="_blank"
-                > <i className="fa-solid fa-display" aria-hidden="true"></i> Portfólio</a>
+                > <i className="fa-solid fa-display" aria-hidden="true"></i> Portfólio</Link>
               )
             }
             return (
-              <a 
+              <Link 
                 key={link.id}
                 className="link" 
                 href={link.caminho}
                 target="_blank"
-                > <i className={"fa-brands fa-"+link.tipo.toLowerCase()} aria-hidden="true"></i> {link.tipo}</a>
+              > <i className={"fa-brands fa-"+link.tipo.toLowerCase()} aria-hidden="true"></i> {link.tipo}</Link>
             )
           })
         ) }
       
-      </div>
-      <Link className="link-footer" href={`/admin/${id_usuario}/gerenciar-links`}>Gerenciar Links</Link>
-      <div onClick={copiarLink} className="copiar-link">
-        <p className="pc">{link}/public/{id_usuario}/</p>
-        <p className="mobile">Copiar Link</p>
-        <i className="fa-regular fa-copy fa-lg"></i>
       </div>
     </section>
   );
